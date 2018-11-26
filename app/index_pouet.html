@@ -69,30 +69,21 @@
               ngf-allow-dir="true"
               ngf-drag="addFilesCtrl.drag($isDragging, $class, $event)"
               ng-mouseenter="hover=true" ng-mouseleave="hover=false">
-              <td>
+              <td colspan="6">
                 <span ng-hide="hover" class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
                 <span ng-show="hover" class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
                 <span id="new-folder-plus" class="glyphicon glyphicon-plus hide" aria-hidden="true"></span>
-                <b>Nouveau dossier</b></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+                <b>Nouveau dossier</b>
+              </td>
             </tr> -->
 
             <!-- Folders list -->
             <tr class="folder-element" ng-if="filesListCtrl.searchResultsFilesList.length == 0" ng-repeat="folder in filesListCtrl.filesList.folders" ng-dblclick="filesListCtrl.openFolder(folder.name)" ng-click="filesListCtrl.showDetails(folder)" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
-              <td>
+              <td colspan="6">
                 <span ng-hide="hover" class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
                 <span ng-show="hover" class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
                 {{ folder.name }}
               </td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
             </tr>
 
             <!-- Files list -->
