@@ -85,6 +85,11 @@ add-file-button {
     padding: 8px;
 }
 
+#details-pane-container {
+    position: sticky;
+    top: 90px;
+}
+
 #details-pane .file-name {
     word-break: break-word;
     white-space: initial;
