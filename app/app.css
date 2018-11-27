@@ -91,7 +91,7 @@ add-file-button {
 }
 
 #details-pane .file-name {
-    word-break: break-word;
+    word-break: break-all;
     white-space: initial;
     line-height: 30px;
 }
