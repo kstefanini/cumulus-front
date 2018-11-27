@@ -3,7 +3,7 @@
   <h3 class="flex">
     <span class="{{ detailsPaneCtrl.details.mimetype | mimetypeIcon }}"></span>
     <span class="file-name ellipsis-content">
-      <a href="#" editable-text="detailsPaneCtrl.details.name" onbeforesave="detailsPaneCtrl.handlePartialUpdateEvent(detailsPaneCtrl.details.fkey, 'name', $data)">
+      <a href editable-text="detailsPaneCtrl.details.name" onbeforesave="detailsPaneCtrl.handlePartialUpdateEvent(detailsPaneCtrl.details.fkey, 'name', $data)">
         {{ detailsPaneCtrl.details.name }}
         <span class="glyphicon glyphicon-pencil"></span>
       </a>
@@ -21,7 +21,7 @@
   <div class="details-pane-data-cell">
     <div class="details-pane-data-name">Licence</div>
     <div class="details-pane-data-value">
-      <a href="#" editable-select="detailsPaneCtrl.details.license" e-ng-options="s.text as s.text for s in detailsPaneCtrl.licences" onbeforesave="detailsPaneCtrl.handlePartialUpdateEvent(detailsPaneCtrl.details.fkey, 'licence', $data)">
+      <a href editable-select="detailsPaneCtrl.details.license" e-ng-options="s.text as s.text for s in detailsPaneCtrl.licences" onbeforesave="detailsPaneCtrl.handlePartialUpdateEvent(detailsPaneCtrl.details.fkey, 'licence', $data)">
         {{ detailsPaneCtrl.details.license }}
         <span class="glyphicon glyphicon-pencil"></span>
       </a>
@@ -30,7 +30,7 @@
   <div class="details-pane-data-cell">
     <div class="details-pane-data-name">Permissions</div>
     <div class="details-pane-data-value">
-      <a href="#" editable-select="detailsPaneCtrl.details.permissions" e-ng-options="s.text as s.text for s in detailsPaneCtrl.permissionList" onbeforesave="detailsPaneCtrl.handlePartialUpdateEvent(detailsPaneCtrl.details.fkey, 'permissions', $data)">
+      <a href editable-select="detailsPaneCtrl.details.permissions" e-ng-options="s.text as s.text for s in detailsPaneCtrl.permissionList" onbeforesave="detailsPaneCtrl.handlePartialUpdateEvent(detailsPaneCtrl.details.fkey, 'permissions', $data)">
         {{ detailsPaneCtrl.details.permissions }}
         <span class="glyphicon glyphicon-pencil"></span>
       </a>
@@ -39,7 +39,7 @@
   <div class="details-pane-data-cell">
     <div class="details-pane-data-name">Description</div>
     <div class="details-pane-data-value">
-      <a href="#" editable-text="detailsPaneCtrl.details.description">
+      <a href editable-text="detailsPaneCtrl.details.description">
         {{ detailsPaneCtrl.details.description || "pas de description..." }}
         <span class="glyphicon glyphicon-pencil"></span>
       </a>
