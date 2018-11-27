@@ -66,15 +66,7 @@
         var userInfo = {};
 
         return $http.get(config.userInfoByIdUrl + '/' + userIds.join(',')).then(function(response) {
-          // service response format is not consistent
-          // has to index info if only one id is asked
-          if (userIds.length == 1) {
-            userInfo[response.data.id] = response.data;
-          } else {
-            userInfo = response.data;
-          }
-
-          return userInfo;
+          return response.data;
         });
       } else {
         return $q.when({});
