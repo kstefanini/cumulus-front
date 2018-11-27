@@ -236,7 +236,11 @@ add-file-button {
 }
 
 .flex1 {
-    flex: 1;
+    flex: 1 1 0;
+}
+
+.flex03 {
+    flex: 0.33 1 0;
 }
 
 .pull-right-flex {
