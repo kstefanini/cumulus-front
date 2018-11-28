@@ -93,8 +93,12 @@
       $rootScope.$on('fileSearch', function(event, query) {
         vm.isSearching = true;
         FilesListService.fileSearch(query, function(data) {
-          vm.searchResultsFilesList = data;
-          $rootScope.nbSearchResults = data.files.length;
+          if (query.length > 0) {
+            vm.searchResultsFilesList = data;
+            $rootScope.nbSearchResults = data.files.length;
+          } else {
+            $rootScope.$broadcast('searchClosed');
+          }
           vm.isSearching = false;
         }, function(error) {
           vm.isSearching = false;
