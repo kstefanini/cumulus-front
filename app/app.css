@@ -410,6 +410,17 @@ body.modal-open {
   outline: -webkit-focus-ring-color auto 0px;
 }
 
+#file-search-input.ng-invalid-minlength {
+    border: 1px solid red;
+}
+
+.search-invalid {
+    color: red;
+    display: inline-block;
+    position: relative;
+    top: -55px;
+}
+
 .float-none {
   float: none;
 }
