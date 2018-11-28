@@ -3,7 +3,7 @@
 
   angular.module('cumulus.details')
 
-  .directive('detailsPaneData', ['config', function(config) {
+  .directive('detailsPaneDataCell', ['config', function(config) {
 
     var path = config.ressourcesPath;
 
