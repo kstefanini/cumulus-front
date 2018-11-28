@@ -112,6 +112,7 @@
       $rootScope.$on('searchClosed', function() {
         vm.filesList = FilesListService.getList();
         vm.searchResultsFilesList = [];
+        $rootScope.nbSearchResults = 0;
         $rootScope.$broadcast('refreshBreadcrumbs');
       });
 
