@@ -7,7 +7,7 @@
     var DetailsPaneController = function($rootScope, FilesListService) {
       var vm = this;
       //@todo : put these in conf!
-      vm.licences = [
+      vm.licenses = [
         {value: 1, text: 'CC-BY-SA'},
         {value: 2, text: 'Copyright'}
       ];
@@ -30,7 +30,7 @@
       });
 
       //@todo : put these in conf!
-      vm.licences = [
+      vm.licenses = [
         {value: 1, text: 'CC-BY-SA'},
         {value: 2, text: 'Copyright'}
       ];

@@ -84,7 +84,7 @@
           controller: function($scope, files, close) {
             var vm = this;
 
-            vm.licences = [{
+            vm.licenses = [{
                 value: 1,
                 text: 'CC-BY-SA'
               },
@@ -113,9 +113,9 @@
             };
 
             vm.closeUploadFileModal = function(result) {
-              // Current service code doesn't handle licence/Permissions
+              // Current service code doesn't handle license/Permissions
               // when uploading files. We keep this in case of refactoring
-              //close(vm.file, vm.permissions, vm.licence, 200);
+              //close(vm.file, vm.permissions, vm.license, 200);
               close(vm.file, 200);
             };
           },
