@@ -27,6 +27,126 @@
       vm.downloadUrl = function() {
         return config.filesServiceUrl + vm.currentPath + '/';
       }
+
+      vm.uploadFile = function() {
+        FilesListService.uploadFile();
+      };
+
+      vm.createNewFolder = function() {
+        ModalService.showModal({
+          templateUrl: config.ressourcesPath + 'modal/create-folder.html',
+          controller: function($scope, files, close) {
+            var vm = this;
+
+            vm.folderName = 'Indiquer un nom pour ';
+
+            vm.closeModal = function() {
+              jQuery(".modal-backdrop").remove();
+              jQuery(".modal").remove();
+            };
+
+            vm.close = function(result) {
+
+              close(vm.folderName, 200);
+            };
+          },
+          controllerAs: 'newFolderModalCtrl',
+          inputs: {
+            files: $scope.files
+          },
+          appendElement: angular.element(document.getElementById('modal'))
+        }).then(function(modal) {
+          modal.element.modal();
+          modal.close.then(function(userResponse) {
+            // @todo: checker le nom du dossier
+            // if (isValidFolderName(userResponse)) {} ...
+
+            if (userResponse !== undefined) {
+              var crumbsArray = breadcrumbsService.getCurrentPathCrumbs();
+              var currentPath = crumbsArray.slice(1, crumbsArray.length).join('/');
+              FilesListService.createNewFolder(userResponse, currentPath, function() {
+                var crumbsArray = breadcrumbsService.getCurrentPathCrumbs(),
+                  currentPath;
+                currentPath = crumbsArray.slice(1, crumbsArray.length).join('/');
+                $rootScope.$broadcast('openAbsoluteFolder', '/' + currentPath);
+                ngToast.create('Répertoire créé avec succès.');
+                jQuery(".modal-backdrop").remove();
+                jQuery(".modal").remove();
+              });
+            }
+          });
+        });
+      };
+
+      vm.showUploadFileModal = function() {
+        ModalService.showModal({
+          templateUrl: config.ressourcesPath + 'modal/upload-file.html',
+          controller: function($scope, files, close) {
+            var vm = this;
+
+            vm.licences = [{
+                value: 1,
+                text: 'CC-BY-SA'
+              },
+              {
+                value: 2,
+                text: 'Copyright'
+              }
+            ];
+            vm.permissionList = [{
+                value: 1,
+                text: 'r'
+              },
+              {
+                value: 2,
+                text: 'w'
+              },
+              {
+                value: 3,
+                text: 'wr'
+              }
+            ];
+
+            vm.closeModal = function() {
+              jQuery(".modal-backdrop").remove();
+              jQuery(".modal").remove();
+            };
+
+            vm.closeUploadFileModal = function(result) {
+              // Current service code doesn't handle licence/Permissions
+              // when uploading files. We keep this in case of refactoring
+              //close(vm.file, vm.permissions, vm.licence, 200);
+              close(vm.file, 200);
+            };
+          },
+          controllerAs: 'newFolderModalCtrl',
+          inputs: {
+            files: $scope.files
+          },
+          appendElement: angular.element(document.getElementById('modal'))
+        }).then(function(modal) {
+          modal.element.modal();
+          modal.close.then(function(file) {
+            if (file !== undefined) {
+              var crumbsArray = breadcrumbsService.getCurrentPathCrumbs();
+              var currentPath = crumbsArray.slice(1, crumbsArray.length).join('/');
+              FilesListService.uploadFiles(Array.from(file), function() {
+                var crumbsArray = breadcrumbsService.getCurrentPathCrumbs(),
+                  currentPath;
+                currentPath = crumbsArray.slice(1, crumbsArray.length).join('/');
+                $rootScope.$broadcast('openAbsoluteFolder', '/' + currentPath);
+                ngToast.create('Fichier(s) ajouté(s) avec succès.');
+              });
+            }
+          });
+
+          var modalBackdrops = document.getElementsByClassName('modal-backdrop');
+          Array.prototype.forEach.call(modalBackdrops, function(modalBackdrop) {
+            modalBackdrop.parentNode.removeChild(modalBackdrop);
+          });
+        });
+      };
+
       vm.contextMenuPrefix = config.ressourcesPath;
 
       $scope.sortFiles = sortFiles;
@@ -158,9 +278,16 @@
               // emit abort signal
               $rootScope.$broadcast('uploadEvent:abort');
             }
+            var modalBackdrops = document.getElementsByClassName('modal-backdrop');
+            Array.prototype.forEach.call(modalBackdrops, function(modalBackdrop) {
+              modalBackdrop.parentNode.removeChild(modalBackdrop);
+
+            });
+            document.getElementById('dropzone').classList.remove("dragover");
+            document.getElementById('dropzone-new-folder').classList.add("hide");
           });
         }).finally(function() {
-            // @todo do that at the right place
+          // @todo do that at the right place
           angular.element(document.getElementById('#dropzone')).removeClass('dragover');
           angular.element(document.getElementById('#dropzone-modal')).addClass('hide');
           angular.element(document.getElementById('#dropzone-new-folder')).addClass('hide');

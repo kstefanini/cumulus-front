@@ -36,10 +36,10 @@
       </a>
     </div>
   </div>
-  <div class="details-pane-data-cell-cell">
+  <div class="details-pane-data-cell">
     <div class="details-pane-data-cell-name">Description</div>
     <div class="details-pane-data-cell-value">
-      <a href editable-text="detailsPaneCtrl.details.description">
+      <a href editable-text="detailsPaneCtrl.details.description" onbeforesave="detailsPaneCtrl.handlePartialUpdateEvent(detailsPaneCtrl.details.fkey, 'description', $data)">
         {{ detailsPaneCtrl.details.description || "pas de description..." }}
         <span class="glyphicon glyphicon-pencil"></span>
       </a>
@@ -47,7 +47,6 @@
   </div>
   <separator></separator>
 
-  <button class="btn btn-default" type="button" ><span class="glyphicon glyphicon-pencil"></span> Ajouter une description</button>
   <button class="btn btn-default" type="button" ng-click="ctxMenulCtrl.deleteFileDialog(detailsPaneCtrl.details)"><span class="glyphicon glyphicon-remove-sign" ></span> Supprimer</button>
 </div>
 

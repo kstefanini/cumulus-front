@@ -22,9 +22,32 @@
         FilesListService.partialUpdate(fkey, propertyName, propertyValue);
       };
 
+      // The currently selected/displayed file has been deleted, we need to
+      // update the detail pane to show the 'merci de sélectionner un fichier'
+      // message instead of the deleted file details.
+      $rootScope.$on('fileDeleted', function(events, args){
+        vm.details = {};
+      });
+
+      //@todo : put these in conf!
+      vm.licences = [
+        {value: 1, text: 'CC-BY-SA'},
+        {value: 2, text: 'Copyright'}
+      ];
+      vm.permissionList = [
+        {value: 1, text: 'r'},
+        {value: 2, text: 'w'},
+        {value: 3, text: 'wr'}
+      ];
+
+      vm.handlePartialUpdateEvent = function(file, propertyName, propertyValue) {
+        FilesListService.partialUpdate(file, propertyName, propertyValue);
+      };
+
       $rootScope.$on('showFileDetails', function(event, details) {
         vm.details = details;
       });
+
     };
 
     var path = config.ressourcesPath;

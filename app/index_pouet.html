@@ -11,10 +11,10 @@
         Résultats: {{ nbSearchResults }}
       </div>
       <filesearch></filesearch>
-      <button class="btn btn-default" type="button" >
+      <button class="btn btn-default" ng-controller="FilesListController as fileCtrl" ng-click="fileCtrl.showUploadFileModal()" type="button">
         <span class="padding8 glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
       </button>
-      <button class="btn btn-default" type="button" >
+      <button class="btn btn-default" ng-controller="FilesListController as fileCtrl" ng-click="fileCtrl.createNewFolder()" type="button">
         <span class="padding8 glyphicon glyphicon-folder-close" aria-hidden="true"></span>
       </button>
       <button class="btn btn-default" type="button"

@@ -31,6 +31,7 @@
 
     /**
      * Return current files and folders list
+     *
      * @return {Objects}
      */
     function getList() {
@@ -51,6 +52,32 @@
           vm.filesList.folders = [];
         })
       ;
+    }
+
+    /**
+     * Updates the property value of a (remote) document resource.
+     *
+     * @param file: the (local representation) of the file to be updated
+     * @param propertyName the name of the property to patch
+     * @param propertyValue the value of the property to patch
+     */
+    function partialUpdate(file, propertyName, propertyValue) {
+      // Construct the request JSON payload
+      var jsonPayload = {};
+      jsonPayload[propertyName] = propertyValue;
+
+      $http.patch(config.filesServiceUrl + '/' + file.fkey, jsonPayload)
+        .success(function(data) {
+          ngToast.create('Document mis à jour');
+          // All the file properties are updated dynamically in the UI but the
+          // key property can be updated server side if the name or path
+          // changed. Consequently, we need to explicitely update it in the
+          // (locale) updated file to reflect this change.
+          file.fkey = data.fkey;
+        })
+        .error(function() {
+          ngToast.create('Une erreur est survenue');
+        });
     }
 
     /**
@@ -362,6 +389,11 @@
      * @return     {Promise}
      */
     function deleteFile(file) {
+      // Broadcasts a signal so the controller knows it's required to
+      // update the detail pane because the currently displayed file
+      // has been deleted.
+      $rootScope.$broadcast('fileDeleted');
+
       return $http.delete(config.filesServiceUrl + file.path + '/' + file.fkey);
     }
 
