@@ -18,7 +18,7 @@
   <details-pane-data-cell datasource="detailsPaneCtrl.details.last_modification_date" dataname="'Modifié le'"></details-pane-data-cell>
   <br>
   <details-pane-data-cell datasource="detailsPaneCtrl.details.owner" dataname="'Propriétaire'"></details-pane-data-cell>
-  <div class="details-pane-data-cell-cell">
+  <div class="details-pane-data-cell">
     <div class="details-pane-data-cell-name">Licence</div>
     <div class="details-pane-data-cell-value">
       <a href editable-select="detailsPaneCtrl.details.license" e-ng-options="s.text as s.text for s in detailsPaneCtrl.licences" onbeforesave="detailsPaneCtrl.handlePartialUpdateEvent(detailsPaneCtrl.details.fkey, 'licence', $data)">
@@ -27,7 +27,7 @@
       </a>
     </div>
   </div>
-  <div class="details-pane-data-cell-cell">
+  <div class="details-pane-data-cell">
     <div class="details-pane-data-cell-name">Permissions</div>
     <div class="details-pane-data-cell-value">
       <a href editable-select="detailsPaneCtrl.details.permissions" e-ng-options="s.text as s.text for s in detailsPaneCtrl.permissionList" onbeforesave="detailsPaneCtrl.handlePartialUpdateEvent(detailsPaneCtrl.details.fkey, 'permissions', $data)">
