@@ -123,7 +123,6 @@ add-file-button {
 }
 
 #right-tools .glyphicon {
-    margin: 0;
     cursor: pointer;
 }
 
@@ -267,8 +266,11 @@ add-file-button {
     vertical-align: bottom;
 }
 
-.glyphicon {
+#files-table .glyphicon {
     margin-right: 8px;
+}
+
+.glyphicon {
     color: #918a6f;
 }
 
