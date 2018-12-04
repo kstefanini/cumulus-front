@@ -1,4 +1,4 @@
-<div id="details-pane-container" ng-if="detailsPaneCtrl.details.name && detailsPaneCtrl.details.size"
+<div id="details-pane-container" ng-if="detailsPaneCtrl.details.name && detailsPaneCtrl.details.href"
  ng-controller="ContextMenuController as ctxMenulCtrl">
   <h3 class="flex">
     <span class="{{ detailsPaneCtrl.details.mimetype | mimetypeIcon }}"></span>
@@ -50,12 +50,23 @@
   <button class="btn btn-default" type="button" ng-click="ctxMenulCtrl.deleteFileDialog(detailsPaneCtrl.details)"><span class="glyphicon glyphicon-remove-sign" ></span> Supprimer</button>
 </div>
 
-<div id="details-pane-container" ng-if="detailsPaneCtrl.details.name && !detailsPaneCtrl.details.size">
-  <h3><span class="{{ 'folder' | mimetypeIcon }}"></span> {{ detailsPaneCtrl.details.name }}</h3>
+<div id="details-pane-container" ng-if="detailsPaneCtrl.details.name && detailsPaneCtrl.details.folder">
+  <h3>
+    <span class="{{ 'folder' | mimetypeIcon }}"></span>
+    <span class="folder-name ellipsis-content">
+      <a href editable-text="detailsPaneCtrl.details.name" onbeforesave="detailsPaneCtrl.handlePartialUpdateEvent(detailsPaneCtrl.details.fkey, 'name', $data)">
+        {{ detailsPaneCtrl.details.name }}
+        <span class="glyphicon glyphicon-pencil"></span>
+      </a>
+    </span>
+  </h3>
 
   <separator></separator>
 
-  <details-pane-data-cell datasource="detailsPaneCtrl.details.folder | folderPath" dataname="'Location'"></details-pane-data-cell>
+  <details-pane-data-cell datasource="detailsPaneCtrl.details.size | formatByte" dataname="'Taille'"></details-pane-data-cell>
+  <br>
+  <details-pane-data-cell datasource="detailsPaneCtrl.details.last_modification_date" dataname="'Modifié le'"></details-pane-data-cell>
+  <details-pane-data-cell datasource="detailsPaneCtrl.details.folder | folderPath" dataname="'Emplacement'"></details-pane-data-cell>
 </div>
 
 <div ng-if="!detailsPaneCtrl.details.name">
