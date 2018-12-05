@@ -437,6 +437,10 @@ body.modal-open {
   z-index: 100000;
 }
 
+#modal .modal {
+    top: 150px;
+}
+
 ul.dropdown-menu {
     position: absolute;
 }
