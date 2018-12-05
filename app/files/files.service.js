@@ -62,19 +62,20 @@
      * @param propertyName the name of the property to patch
      * @param propertyValue the value of the property to patch
      */
-    function partialUpdate(file, propertyName, propertyValue) {
+    function partialUpdate(fkey, propertyName, propertyValue) {
       // Construct the request JSON payload
       var jsonPayload = {};
       jsonPayload[propertyName] = propertyValue;
 
-      $http.patch(config.filesServiceUrl + '/' + file.fkey, jsonPayload)
+      $http.patch(config.filesServiceUrl + '/' + fkey, jsonPayload)
         .success(function(data) {
           ngToast.create('Document mis à jour');
           // All the file properties are updated dynamically in the UI but the
           // key property can be updated server side if the name or path
           // changed. Consequently, we need to explicitely update it in the
           // (locale) updated file to reflect this change.
-          file.fkey = data.fkey;
+          // @todo : broadcast event or something
+          // file.fkey = data.fkey;
         })
         .error(function() {
           ngToast.create('Une erreur est survenue');

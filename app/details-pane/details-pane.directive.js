@@ -40,10 +40,6 @@
         {value: 3, text: 'wr'}
       ];
 
-      vm.handlePartialUpdateEvent = function(file, propertyName, propertyValue) {
-        FilesListService.partialUpdate(file, propertyName, propertyValue);
-      };
-
       $rootScope.$on('showFileDetails', function(event, details) {
         vm.details = details;
       });
