@@ -24,7 +24,8 @@
       partialUpdate: partialUpdate,
       getPathInfo: getPathInfo,
       uploadFiles: uploadFiles,
-      uploadFilesInFolder: uploadFilesInFolder
+      uploadFilesInFolder: uploadFilesInFolder,
+      createNewFolder:createNewFolder
     };
 
     return service;
@@ -411,6 +412,27 @@
           callback(data.path);
         }
       );
+    }
+
+    /**
+     * Create a new folder
+     *
+     * @param      {string}    folderName  The destination folder name
+     * @param      {<type>}    files       The files to upload
+     * @param      {Function}  onSuccess   The on success callback
+     * @param      {Function}  onError     The on error callback
+     */
+    function createNewFolder(folderName, currentPath, onSuccess, onError) {
+      var destinationPath = '/' + currentPath +  '/' + folderName;
+
+      $http.post(
+        config.filesServiceUrl + destinationPath,
+        {
+          groups: config.group
+        }, undefined
+      ).success(function(data) {
+        onSuccess();
+      });
     }
 
     function uploadFiles(files, onSuccess, onError) {
