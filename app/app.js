@@ -16,7 +16,8 @@
     'angularMoment',
     'angularModalService',
     'ngToast',
-    'xeditable'
+    'xeditable',
+    'ngclipboard'
   ])
 
   // .directive('ngRightClick', function($parse) {

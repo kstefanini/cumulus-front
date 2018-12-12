@@ -18,7 +18,8 @@
     "angular-modal-service": "~0.10.x",
     "ngtoast": "~1.5.x",
     "richardba/cc-icons": "*",
-    "angular-xeditable": "^0.8.1"
+    "angular-xeditable": "^0.8.1",
+    "ngclipboard": "^2.0.0"
   },
   "resolutions": {
     "angular": "~1.5.x"

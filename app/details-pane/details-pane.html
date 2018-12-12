@@ -12,6 +12,10 @@
 <!--  data-url="/{{filesServiceUrl + detailsPaneCtrl.details.path + '/' + detailsPaneCtrl.details.fkey}}" -->
   <separator></separator>
 
+  <button class="btn btn-default" type="button" ngclipboard data-clipboard-text="{{ detailsPaneCtrl.details.href }}"><span class="glyphicon glyphicon-copy" ></span> Copier le lien du fichier</button>
+
+  <separator></separator>
+
   <details-pane-data-cell datasource="detailsPaneCtrl.details.size | formatByte" dataname="'Taille'"></details-pane-data-cell>
   <!-- <details-pane-data-cell datasource="detailsPaneCtrl.details.path" dataname="'Emplacement'"></details-pane-data-cell> -->
   <details-pane-data-cell datasource="detailsPaneCtrl.details.creation_date" dataname="'Créé le'"></details-pane-data-cell>
