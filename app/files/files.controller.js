@@ -209,7 +209,7 @@
       $rootScope.$on('fileSearch', function(event, query) {
         vm.isSearching = true;
         FilesListService.fileSearch(query, function(data) {
-          if (query.length > 0) {
+          if (query && query.length > 0) {
             vm.searchResultsFilesList = data;
             $rootScope.nbSearchResults = data.files.length;
           } else {
