@@ -24,10 +24,6 @@
       vm.openFolder = openFolder;
       vm.openAbsoluteFolder = openAbsoluteFolder;
 
-      vm.downloadUrl = function() {
-        return config.filesServiceUrl + vm.currentPath + '/';
-      }
-
       vm.uploadFile = function() {
         FilesListService.uploadFile();
       };

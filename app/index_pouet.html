@@ -103,7 +103,7 @@
               </td>
               <td ng-if="file.size != null">{{ file.size | formatByte }}</td><td ng-if="file.size == null"></td>
               <td><file-license license="{{ file.license }}"></file-license></td>
-              <td><a href="{{ filesListCtrl.downloadUrl() + file.name }}"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
+              <td><a href="{{ file.href }}"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
             </tr>
 
             <!-- Search results files list -->
@@ -121,7 +121,7 @@
               </td>
               <td ng-if="file.size != null">{{ file.size | formatByte }}</td><td ng-if="file.size == null"></td>
               <td><file-license license="{{ file.license }}"></file-license></td>
-              <td><a href="{{ filesListCtrl.downloadUrl() + file.name }}"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
+              <td><a href="{{ file.href }}"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
             </tr>
           </tbody>
         </table>
