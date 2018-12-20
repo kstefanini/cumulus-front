@@ -437,6 +437,13 @@ body.modal-open {
   z-index: 100000;
 }
 
+.modal input[type=file] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 870px;
+}
+
 #modal .modal {
     top: 150px;
 }
